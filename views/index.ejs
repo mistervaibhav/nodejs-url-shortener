@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- MATERIALIZE : Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+
+    <title>URL Shrinker</title>
+  </head>
+  <body class="container">
+    <h1>URL Shrinker</h1>
+
+    <form action="/shortUrls" method="POST">
+      <label for="fullUrl">URL</label>
+      <input placeholder="Paste your URL here ..." type="url" name="fullUrl" id="fullUrl" />
+      <button class="waves-effect waves-light btn" type="submit">Shrink</button>
+    </form>
+
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Full URL</th>
+          <th>Short URL</th>
+          <th>Clicks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% shortUrls.forEach(element => { %>
+        <td>
+          <a href="<%= element.full %>"><%= element.full %></a>
+        </td>
+        <td><a href="<%= element.short %>"><%= element.short %></a></td>
+        <td><%= element.clicks %></td>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
